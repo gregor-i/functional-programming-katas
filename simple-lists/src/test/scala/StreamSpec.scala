@@ -1,6 +1,11 @@
 import java.util.Optional
+import java.util.function.BiFunction
+
 import org.scalatest.{Matchers, WordSpec}
+import util.Stream._
 import util.Tuple
+import java.util
+
 import scala.collection.JavaConverters._
 import scala.util.Random
 
@@ -166,11 +171,30 @@ class StreamSpec extends WordSpec with Matchers {
     }
 
     "implement `iterate` to create infinite things" in {
-//      val naturalNumbers = iterate[Integer](0, x => Optional.of(x + 1))
+//      val naturalNumbers = iterate[Int](0, x => Optional.of(x + 1))
 //      val n = Random.nextInt(1000)
 //
 //      toList(take(naturalNumbers, n)).asScala.toList shouldBe (0 until n).toList
     }
 
+    "consume itself eagerly" in {
+//      val naturalNumbers = iterate[Int](0, x => Optional.of(x + 1))
+//
+//      val result = foldLeft[Int, Int](0, (b: Int, a: Int) => b + a, take(10000, naturalNumbers))
+//
+//      result shouldBe (0 until 10000).sum
+    }
+
+    "cycle through collections" in {
+//      val fifths = cycle(util.Arrays.asList(1, 2, 3, 4, 5))
+//
+//      toList(take(10000, fifths)).asScala.toList shouldBe Stream.continually(Stream(1, 2, 3, 4, 5)).flatten.take(10000).toList
+    }
+
+    "unfold new streams" in {
+//      val natural = unfold[String, Int](0, x => Optional.of(Tuple.of(x.toString, x + 1)))
+//
+//      toList(take(1000, natural)).asScala.toList shouldBe Stream.iterate(0)(_ + 1).map(_.toString).take(1000).toList
+    }
   }
 }
