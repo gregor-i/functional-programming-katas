@@ -9,3 +9,9 @@ lazy val `simple-lists` = project.in(file("simple-lists"))
     name := "simple-lists",
     scalaTest
   )
+
+lazy val `simple-errors` = project.in(file("simple-errors"))
+  .settings(
+    name := "simple-errors",
+    scalaTest
+  )

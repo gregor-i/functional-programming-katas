@@ -1,6 +1,8 @@
-package util;
+package lazy;
 
 public class StreamExercises {
+
+    // FUNCTIONAL PROGRAMMING FORUM
 
     /*
      * 1. Re-implement `map` and `take` in terms of `unfold`
