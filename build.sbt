@@ -15,3 +15,10 @@ lazy val `simple-errors` = project.in(file("simple-errors"))
     name := "simple-errors",
     scalaTest
   )
+
+lazy val `simple-generators` = project.in(file("simple-generators"))
+  .settings(
+    name := "simple-generators",
+    scalaTest
+  )
+
