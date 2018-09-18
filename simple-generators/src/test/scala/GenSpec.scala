@@ -34,7 +34,7 @@ class GenSpec extends WordSpec with Matchers {
 //      genDouble.run(seed)._2.isInstanceOf[Double] shouldBe true
     }
 
-    "not generate the same value for the same seed" in {
+    "generate the same value for the same seed" in {
 //      genInt.run(seed)._2 shouldBe genInt.run(seed)._2
     }
 
@@ -54,6 +54,13 @@ class GenSpec extends WordSpec with Matchers {
 //      genInt.run(seed)._2 should not be genInt.run(seed2)._2
     }
 
+    "allow changes to the values it's generating" in {
+      //      val const = "hello"
+      //
+      //      genInt.map { i => i.toChar }.run(seed)._2.isInstanceOf[Char] shouldBe true
+      //      genInt.map { _ => const }.run(seed)._2 shouldBe const
+    }
+
     "generate lists of values given a generator of one value" in {
 //      val i = 1
 //
@@ -63,25 +70,18 @@ class GenSpec extends WordSpec with Matchers {
 
     "have some sample function, that creates lists of values of a fixed size given a generator" in {
 //      val i = 1
-//      sample(genInt.map(_ => i), 10) shouldBe (0 until 10).map(_ => i).toList
-    }
-
-    "allow changes to the values it's generating" in {
-//      val const = "hello"
-//
-//      map(genInt) { i => i.toChar }.run(seed)._2.isInstanceOf[Char] shouldBe true
-//      map(genInt) { _ => const }.run(seed)._2 shouldBe const
+//      sample(genInt.map(_ => i), 10, seed) shouldBe (0 until 10).map(_ => i).toList
     }
 
     "be composable with other generators" in {
 //      val i = 1
 //      val d = 1.0
 //
-//      flatMap(genInt) { i =>
+//      genInt.flatMap { i =>
 //        genDouble.map { d => (i, d) }
 //      }.isInstanceOf[Gen[(Int, Double)]] shouldBe true
 //
-//      flatMap(genInt.map(_ => i)) { xi =>
+//      genInt.map(_ => i).flatMap { xi =>
 //        genDouble.map(_ => d).map { xd => (xi, xd) }
 //      }.run(seed)._2 shouldBe(i, d)
     }
