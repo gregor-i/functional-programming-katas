@@ -89,6 +89,11 @@ class MyListSpec extends WordSpec with Matchers with OptionalInterop {
       example1.map(s => s.charAt(0)) shouldBe new MyConst('a', new MyConst('b', new MyNil()))
     }
 
+    "implement filter" in {
+      example1.filter(s => s == "b") shouldBe new MyConst("b", new MyNil())
+    }
+
+
     "implement foreach" in {
       var counter = 0
       example1.foreach(s => counter += 1 )
