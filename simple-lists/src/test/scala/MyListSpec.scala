@@ -2,26 +2,6 @@ import java.util.Optional
 
 import org.scalatest._
 
-/**
-  * README:
-  *
-  * This spec holds the exercises.
-  * To do this kata you should uncomment the specs one by one and make the spec green.
-
-  * The specs are split into parts.
-  * It should be possible to complete each part without implementing methods of the other parts. (except Part0)
-  * The parts are ordered by difficulty.
-  *
-  * Part0 : data structure
-  * Part1 : collection operations
-  * Part2 : monadic and FP operations
-  * Part3 : syntax sugar
-  *
-  *
-  * Happy Coding!
-  *
-  */
-
 class MyListSpec extends WordSpec with Matchers {
 
 
