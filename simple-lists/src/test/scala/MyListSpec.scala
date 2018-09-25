@@ -2,7 +2,7 @@ import java.util.Optional
 
 import org.scalatest._
 
-class MyListSpec extends WordSpec with Matchers with OptionalInterop {
+class MyListSpec extends WordSpec with Matchers {
 
   /*
 
@@ -48,14 +48,14 @@ class MyListSpec extends WordSpec with Matchers with OptionalInterop {
     }
 
     "implement a find" in {
-      example1.find(_ == "b").interop shouldBe Optional.of("b").interop
-      example1.find(_ == "c").interop shouldBe Optional.empty.interop
+      example1.find(_ == "b") should (be(Optional.of("b")) or be(Some("b")))
+      example1.find(_ == "c") should (be(Optional.empty()) or be(None))
     }
 
     "implement access with index" in {
-      example1.get(0).interop shouldBe Optional.of("a").interop
-      example1.get(1).interop shouldBe Optional.of("b").interop
-      example1.get(2).interop shouldBe Optional.empty().interop
+      example1.get(0) should (be(Optional.of("a")) or be(Some("a")))
+      example1.get(1) should (be(Optional.of("b")) or be(Some("b")))
+      example1.get(2) should (be(Optional.empty()) or be(None))
     }
 
     "implement a useful equals" in {
@@ -69,47 +69,19 @@ class MyListSpec extends WordSpec with Matchers with OptionalInterop {
 
     "implement prepend" in {
       example1.prepend("c") shouldBe new MyConst("c", example1)
+      new MyNil[Int]().prepend(15) shouldBe new MyConst(15, new MyNil())
     }
 
     "implement append" in {
       example1.append("c") shouldBe new MyConst("a", new MyConst("b", new MyConst("c", new MyNil())))
+      new MyNil[Int]().append(15) shouldBe new MyConst(15, new MyNil())
     }
 
     "implement concat" in {
       example1.concat(example1) shouldBe new MyConst("a", new MyConst("b", new MyConst("a", new MyConst("b", new MyNil()))))
+      new MyNil[Int]().concat(new MyNil[Int]()) shouldBe new MyNil()
     }
   }
-
-
-
-  "List (monadic and FP operations)" should{
-    val example1: MyList[String] = new MyConst("a", new MyConst("b", new MyNil()))
-
-    "implement map" in {
-      example1.map(s => s.charAt(0)) shouldBe new MyConst('a', new MyConst('b', new MyNil()))
-    }
-
-    "implement filter" in {
-      example1.filter(s => s == "b") shouldBe new MyConst("b", new MyNil())
-    }
-
-
-    "implement foreach" in {
-      var counter = 0
-      example1.foreach(s => counter += 1 )
-      counter shouldBe 2
-    }
-
-    "implement flatMap" in {
-      example1.flatMap(s1 => example1.map(s2 => (s1, s2)))
-        .shouldBe(new MyConst(("a", "a"), new MyConst(("a", "b"), new MyConst(("b", "a"), new MyConst(("b", "b"), new MyNil())))))
-    }
-
-    "implement a fold" in {
-      example1.fold[String]("", (s1, s2) => s1 + s2) shouldBe "ab"
-    }
-  }
-
 
   "List (syntax sugar)" should{
     val example1: MyList[String] = new MyConst("a", new MyConst("b", new MyNil()))
@@ -133,6 +105,48 @@ class MyListSpec extends WordSpec with Matchers with OptionalInterop {
       MyList.construct("a", "b") shouldBe example1
     }
   }
+
+
+  "List (monadic and FP operations)" should{
+    val example1: MyList[String] = MyList.construct("a", "b")
+
+    "implement map" in {
+      example1.map(s => s.charAt(0)) shouldBe MyList.construct('a','b')
+      example1.map(s => s + "!") shouldBe MyList.construct("a!", "b!")
+    }
+
+    "implement filter" in {
+      example1.filter(s => s == "b") shouldBe MyList.construct("b")
+    }
+
+    "implement foreach" in {
+      var counter = 0
+      example1.foreach(s => counter += 1 )
+      counter shouldBe 2
+    }
+
+    "implement flatMap" in {
+      example1.flatMap(s1 => example1.map(s2 => s1 + s2))
+        .shouldBe(MyList.construct("aa", "ab", "ba", "bb"))
+
+      example1.flatMap(_ => example1).length shouldBe 2 * 2
+      example1.flatMap(_ => example1).flatMap(_ => example1).length shouldBe 2 * 2 * 2
+    }
+
+    "having flatMap, map and filter, it is possible to use for" in {
+      (for{
+        s1 <- example1
+        s2 <- example1
+      } yield s1 + s2) shouldBe MyList.construct("aa", "ab", "ba", "bb")
+    }
+
+    "implement a fold" in {
+      example1.fold[String]("", (s1, s2) => s1 + s2) shouldBe "ab"
+      example1.fold[Int](0, (s, l) => s.length + l) shouldBe 2
+    }
+  }
+
+
 
   */
 }
