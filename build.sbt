@@ -27,3 +27,9 @@ lazy val `simple-generators` = project.in(file("simple-generators"))
     scalaTest
   )
 
+lazy val `reactive-streams-with-akka` = project.in(file("reactive-streams-with-akka"))
+  .settings(
+    name := "reactive-streams-with-akka",
+    scalaTest,
+    libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.5.17"
+  )
