@@ -19,15 +19,29 @@ You will learn about immutablity, function passing and recursion.
 Feel free to implement your solution first in java and then in scala.
 
 Quick start:
-```
+```sh
 sbt ~simple-lists/test
 ```
 
+## Kata 2 - Simple Streams
 
-## Kata 2 - Simple Errors
+todo
+
+## Kata 3 - Simple Errors
 
 todo
 
-## Kata 3 - Simple Generators
+## Kata 4 - Simple Generators
 
 todo
+
+## Kata 5 - Reactive Streams with akka-streams
+
+The starting point is the `AkkaStreamKata1Spec.scala` file. Just uncomment the spec and get started.
+
+The goal of the project is to familiarize yourself with `Sinks`, `Sources` and `Flows` to learn the basis of akka streams.
+
+Quick start:
+```sh
+sbt "~reactive-streams-with-akka/test"
+```
