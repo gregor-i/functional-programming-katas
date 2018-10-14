@@ -6,6 +6,7 @@ import scala.concurrent.{Future, TimeoutException}
 
 class AkkaStreamKata1Spec extends FunSuite with Matchers with GraphExec {
 
+  /*
 
   test("define a Source that produces the BigIntegers from 1 to 10") {
     executeGraph(
@@ -78,4 +79,5 @@ class AkkaStreamKata1Spec extends FunSuite with Matchers with GraphExec {
     counter shouldBe 95
   }
 
+  */
 }

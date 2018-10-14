@@ -4,7 +4,7 @@ import org.scalatest._
 
 class MyListSpec extends WordSpec with Matchers {
 
-
+  /*
 
   "List (data structure)" should {
     "have a simple constructor" in {
@@ -148,5 +148,5 @@ class MyListSpec extends WordSpec with Matchers {
 
 
 
-
+  */
 }
