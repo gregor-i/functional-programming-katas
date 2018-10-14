@@ -1,8 +1,6 @@
 name := "functional-programming-katas"
 scalaVersion in ThisBuild := "2.12.6"
 
-def scalaTest = libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
-
 lazy val `simple-lists` = project.in(file("simple-lists"))
   .settings(
     name := "simple-lists",
@@ -31,5 +29,16 @@ lazy val `reactive-streams-with-akka` = project.in(file("reactive-streams-with-a
   .settings(
     name := "reactive-streams-with-akka",
     scalaTest,
-    libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.5.17"
+    akkaStreams
   )
+
+lazy val `functional-type-classes` = project.in(file("functional-type-classes"))
+  .settings(
+    name := "functional-type-classes",
+    scalaTest,
+    discipline
+  )
+
+def scalaTest = libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % Test
+def akkaStreams = libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.5.17"
+def discipline = libraryDependencies += "org.typelevel" %% "discipline" % "0.10.0" % Test
