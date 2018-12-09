@@ -1,0 +1,4 @@
+package reader
+
+object Reader {
+}
