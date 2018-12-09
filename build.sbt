@@ -25,6 +25,13 @@ lazy val `simple-generators` = project.in(file("simple-generators"))
     scalaTest
   )
 
+lazy val `simple-dependency-injection` = project.in(file("simple-dependency-injection"))
+  .settings(
+    name := "simple-dependency-injection",
+    scalaTest
+  )
+
+
 lazy val `reactive-streams-with-akka` = project.in(file("reactive-streams-with-akka"))
   .settings(
     name := "reactive-streams-with-akka",
