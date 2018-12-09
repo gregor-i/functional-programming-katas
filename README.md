@@ -50,8 +50,17 @@ Quick start:
 sbt "~functional-type-classes/test"
 ```
 
+## Kata 6 - Simple dependency injection
 
-## Kata 6 - Reactive Streams with akka-streams
+The point of this Kata is to explore a functional datastructure, that may be readily used
+for a very simple but versatile form of dependency injection.
+
+Your starting point is the spec for said construct, namely `ReaderSpec` file.
+
+Your goal is to use this spec as guide to implement the datastructure called `Reader`.
+
+
+## Kata _ - Reactive Streams with akka-streams
 
 The starting point is the `AkkaStreamKata1Spec.scala` file. Just uncomment the spec and get started.
 
