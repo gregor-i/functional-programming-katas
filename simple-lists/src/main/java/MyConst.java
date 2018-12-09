@@ -65,6 +65,14 @@ public class MyConst<A> implements MyList<A> {
     }
 
     @Override
+    public MyList<A> filter(Predicate<A> f) {
+        if (f.test(head))
+            return new MyConst<A>(head, tail.filter(f));
+        else
+            return tail.filter(f);
+    }
+
+    @Override
     public void foreach(Consumer<A> f) {
         f.accept(head);
         tail.foreach(f);

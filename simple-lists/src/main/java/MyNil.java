@@ -49,6 +49,11 @@ public class MyNil<A> implements MyList<A> {
     }
 
     @Override
+    public MyList<A> filter(Predicate<A> f) {
+        return this;
+    }
+
+    @Override
     public void foreach(Consumer<A> f) {
         return;
     }

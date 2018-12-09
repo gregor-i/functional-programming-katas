@@ -19,6 +19,11 @@ public interface MyList<A> {
 
     public <B> MyList<B> map(Function<A, B> f);
 
+<<<<<<< HEAD
+=======
+    public MyList<A> filter(Predicate<A> f);
+
+>>>>>>> d9f221aef90fcb2267aae087e2df6dace5da4ca7
     public void foreach(Consumer<A> f);
 
     public <B> MyList<B> flatMap(Function<A, MyList<B>> f);
