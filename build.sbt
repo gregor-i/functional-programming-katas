@@ -31,6 +31,11 @@ lazy val `simple-dependency-injection` = project.in(file("simple-dependency-inje
     scalaTest
   )
 
+lazy val `simple-logging` = project.in(file("simple-logging"))
+  .settings(
+    name := "simple-logging",
+    scalaTest
+  )
 
 lazy val `reactive-streams-with-akka` = project.in(file("reactive-streams-with-akka"))
   .settings(
