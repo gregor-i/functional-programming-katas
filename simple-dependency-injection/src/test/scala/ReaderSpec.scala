@@ -41,7 +41,7 @@ class ReaderSpec extends WordSpec with Matchers {
 //      computation.run(environment) shouldBe (items.sum, items.tail.sum)
     }
 
-    "have a covariant Functor" in {
+    "have a contravariant Functor" in {
 //      val computation1 = ask[Dep].map (_.things.sum)
 //      val computation2 = ask[(Dep, Int)].map { case (dep, i) => dep.things.sum + i }
 //
